@@ -12,6 +12,11 @@
 		88C3047D1E195E4700ECA0E0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88C3047B1E195E4700ECA0E0 /* Main.storyboard */; };
 		88C3047F1E195E4700ECA0E0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88C3047E1E195E4700ECA0E0 /* Assets.xcassets */; };
 		88C304821E195E4700ECA0E0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88C304801E195E4700ECA0E0 /* LaunchScreen.storyboard */; };
+		88C3048B1E195EA900ECA0E0 /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 88C3048A1E195EA900ECA0E0 /* libstdc++.tbd */; };
+		88C3048D1E195ECE00ECA0E0 /* libMTSCRA.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88C3048C1E195ECE00ECA0E0 /* libMTSCRA.a */; };
+		88C304921E195FC900ECA0E0 /* HexUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C304911E195FC900ECA0E0 /* HexUtil.m */; };
+		88C304971E19613500ECA0E0 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88C304961E19613500ECA0E0 /* AVFoundation.framework */; };
+		88C3049A1E19631000ECA0E0 /* NSObject+TLVParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C304981E19631000ECA0E0 /* NSObject+TLVParser.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +27,15 @@
 		88C3047E1E195E4700ECA0E0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		88C304811E195E4700ECA0E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		88C304831E195E4700ECA0E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		88C3048A1E195EA900ECA0E0 /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
+		88C3048C1E195ECE00ECA0E0 /* libMTSCRA.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMTSCRA.a; sourceTree = "<group>"; };
+		88C3048E1E195EED00ECA0E0 /* MTSCRA.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTSCRA.h; sourceTree = "<group>"; };
+		88C3048F1E195FC800ECA0E0 /* MTSCRADemoSwift-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MTSCRADemoSwift-Bridging-Header.h"; sourceTree = "<group>"; };
+		88C304901E195FC900ECA0E0 /* HexUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HexUtil.h; sourceTree = "<group>"; };
+		88C304911E195FC900ECA0E0 /* HexUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HexUtil.m; sourceTree = "<group>"; };
+		88C304961E19613500ECA0E0 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		88C304981E19631000ECA0E0 /* NSObject+TLVParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+TLVParser.m"; sourceTree = "<group>"; };
+		88C304991E19631000ECA0E0 /* NSObject+TLVParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+TLVParser.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +43,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88C304971E19613500ECA0E0 /* AVFoundation.framework in Frameworks */,
+				88C3048B1E195EA900ECA0E0 /* libstdc++.tbd in Frameworks */,
+				88C3048D1E195ECE00ECA0E0 /* libMTSCRA.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +57,7 @@
 			children = (
 				88C304761E195E4700ECA0E0 /* MTSCRADemoSwift */,
 				88C304751E195E4700ECA0E0 /* Products */,
+				88C304891E195EA900ECA0E0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +72,38 @@
 		88C304761E195E4700ECA0E0 /* MTSCRADemoSwift */ = {
 			isa = PBXGroup;
 			children = (
+				88C3049B1E19636D00ECA0E0 /* TLVParser */,
+				88C3048E1E195EED00ECA0E0 /* MTSCRA.h */,
+				88C3048C1E195ECE00ECA0E0 /* libMTSCRA.a */,
 				88C304771E195E4700ECA0E0 /* AppDelegate.swift */,
 				88C304791E195E4700ECA0E0 /* ViewController.swift */,
 				88C3047B1E195E4700ECA0E0 /* Main.storyboard */,
 				88C3047E1E195E4700ECA0E0 /* Assets.xcassets */,
 				88C304801E195E4700ECA0E0 /* LaunchScreen.storyboard */,
 				88C304831E195E4700ECA0E0 /* Info.plist */,
+				88C3048F1E195FC800ECA0E0 /* MTSCRADemoSwift-Bridging-Header.h */,
 			);
 			path = MTSCRADemoSwift;
+			sourceTree = "<group>";
+		};
+		88C304891E195EA900ECA0E0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				88C304961E19613500ECA0E0 /* AVFoundation.framework */,
+				88C3048A1E195EA900ECA0E0 /* libstdc++.tbd */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		88C3049B1E19636D00ECA0E0 /* TLVParser */ = {
+			isa = PBXGroup;
+			children = (
+				88C304981E19631000ECA0E0 /* NSObject+TLVParser.m */,
+				88C304991E19631000ECA0E0 /* NSObject+TLVParser.h */,
+				88C304901E195FC900ECA0E0 /* HexUtil.h */,
+				88C304911E195FC900ECA0E0 /* HexUtil.m */,
+			);
+			name = TLVParser;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -97,6 +139,7 @@
 					88C304731E195E4700ECA0E0 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = PW6A8Y96ZX;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -137,6 +180,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88C304921E195FC900ECA0E0 /* HexUtil.m in Sources */,
+				88C3049A1E19631000ECA0E0 /* NSObject+TLVParser.m in Sources */,
 				88C3047A1E195E4700ECA0E0 /* ViewController.swift in Sources */,
 				88C304781E195E4700ECA0E0 /* AppDelegate.swift in Sources */,
 			);
@@ -259,12 +304,20 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = PW6A8Y96ZX;
 				INFOPLIST_FILE = MTSCRADemoSwift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/MTSCRADemoSwift",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.hushbox.mtscrademo.MTSCRADemoSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MTSCRADemoSwift/MTSCRADemoSwift-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -272,12 +325,19 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = PW6A8Y96ZX;
 				INFOPLIST_FILE = MTSCRADemoSwift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/MTSCRADemoSwift",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.hushbox.mtscrademo.MTSCRADemoSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MTSCRADemoSwift/MTSCRADemoSwift-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -300,6 +360,7 @@
 				88C304881E195E4700ECA0E0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
