@@ -10,6 +10,7 @@ import MediaPlayer
 
 class ViewController: UIViewController, MTSCRAEventDelegate {
 
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var nameValue: UILabel!
     @IBOutlet weak var last4Value: UILabel!
     @IBOutlet weak var expr: UILabel!
@@ -28,7 +29,7 @@ class ViewController: UIViewController, MTSCRAEventDelegate {
         
         lib.listen(forEvents: UInt32(TRANS_EVENT_OK)|UInt32(TRANS_EVENT_START)|UInt32(TRANS_EVENT_ERROR))
         
-         self.textView.text = "Magtek SDK Version \(lib.getSDKVersion())"
+        
         
         self.nameValue.text = ""
         self.last4Value.text = ""
@@ -38,25 +39,40 @@ class ViewController: UIViewController, MTSCRAEventDelegate {
     @IBAction func connect(_ sender: Any) {
         lib.openDevice()
     }
-    override func viewDidAppear(_ animated: Bool) {
-        //
+    
+    @IBAction func disconnect(_ sender: Any) {
+        lib.closeDevice()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        
+        super.viewWillAppear(animated)
+        
         if lib.isDeviceConnected() {
-            self.textView.text = "Connected"
+            
         } else if lib.isDeviceConnected() {
-            self.textView.text = "Disconnected"
+            
+            self.textView.text = "Magtek SDK Version \(lib.getSDKVersion())"
+            self.titleLabel.text = "MagTek"
         }
         
     }
-
+    
+   
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
+    
     @objc func onDataReceived(_ cardDataObj: MTCardData!, instance: Any!) {
         
         DispatchQueue.main.async {
-            let  cardResponse = String(format: "Track.Status: %@\n\nTrack1.Status: %@\n\nTrack2.Status: %@\n\nTrack3.Status: %@\n\nEncryption.Status: %@\n\nTrack.Masked: %@\n\nTrack1.Masked: %@\n\nTrack2.Masked: %@\n\nTrack3.Masked: %@\n\nTrack1.Encrypted: %@\n\nTrack2.Encrypted: %@\n\nTrack3.Encrypted: %@\n\nCard.PAN: %@\n\nCard.IIN: %@\n\nCard.Name: %@\n\nCard.Last4: %@\n\nCard.ExpDate: %@\n\nCard.ExpDateMonth: %@\n\nCard.ExpDateYear: %@\n\nCard.SvcCode: %@\n\nCard.PANLength: %ld\n\nKSN: %@\n\nDevice.SerialNumber: %@\n\nFirmware Revision Number: %@\n\nMagnePrint: %@\n\nMagnePrint.Length: %i\n\nMagnePrintStatus: %@\n\nSessionID: %@\n\nDevice Model Name: %@\n\n",         cardDataObj.trackDecodeStatus,
+            
+            let tlvString = self.lib.getTLVPayload()
+            
+            
+            let  cardResponse = String(format: "Track.Status: %@\n\nTrack1.Status: %@\n\nTrack2.Status: %@\n\nTrack3.Status: %@\n\nEncryption.Status: %@\n\nTrack.Masked: %@\n\nTrack1.Masked: %@\n\nTrack2.Masked: %@\n\nTrack3.Masked: %@\n\nTrack1.Encrypted: %@\n\nTrack2.Encrypted: %@\n\nTrack3.Encrypted: %@\n\nCard.PAN: %@\n\nCard.IIN: %@\n\nCard.Name: %@\n\nCard.Last4: %@\n\nCard.ExpDate: %@\n\nCard.ExpDateMonth: %@\n\nCard.ExpDateYear: %@\n\nCard.SvcCode: %@\n\nCard.PANLength: %ld\n\nKSN: %@\n\nDevice.SerialNumber: %@\n\nFirmware Revision Number: %@\n\nMagnePrint: %@\n\nMagnePrint.Length: %i\n\nMagnePrintStatus: %@\n\nSessionID: %@\n\nDevice Model Name: %@\n\nTLVPayload: %@",
+                                       cardDataObj.trackDecodeStatus,
                                        cardDataObj.track1DecodeStatus,
                                        cardDataObj.track2DecodeStatus,
                                        cardDataObj.track3DecodeStatus,
@@ -84,7 +100,8 @@ class ViewController: UIViewController, MTSCRAEventDelegate {
                                        cardDataObj.magnePrintLength,
                                        cardDataObj.magneprintStatus,
                                        cardDataObj.encrypedSessionID,
-                                       cardDataObj.deviceName)
+                                       cardDataObj.deviceName,
+                                       tlvString!)
             
             
              self.textView.text = "Received Card Data:\n \(cardResponse)"
@@ -106,11 +123,30 @@ class ViewController: UIViewController, MTSCRAEventDelegate {
     @objc func onDeviceConnectionDidChange(_ deviceType: UInt, connected: Bool, instance: Any!) {
         
         if (lib.isDeviceOpened()){
+            
             if (connected){
-               DispatchQueue.main.async {self.textView.text = "Connected to :\n \(deviceType)"}
+               DispatchQueue.main.async {
+
+                self.titleLabel.text = "MagTek Conected"
+                self.textView.text = "Magtek SDK Version \(self.lib.getSDKVersion()) \nReady To Swipe Card..."
+
+                }
             }
         }
-        
-        
+        else
+        {
+            if (!lib.isDeviceOpened())
+            {
+                DispatchQueue.main.async {
+                    
+                    self.titleLabel.text = "MagTek"
+                    self.textView.text = "Magtek SDK Version \(self.lib.getSDKVersion()) \nDisconnected..."
+                    self.nameValue.text = ""
+                    self.last4Value.text = ""
+                    self.expr.text = ""
+                    
+                }
+            }
+        }
     }
 }

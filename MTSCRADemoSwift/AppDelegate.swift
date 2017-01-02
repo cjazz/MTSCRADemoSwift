@@ -3,7 +3,7 @@
 //  MTSCRADemoSwift
 //
 //  Created by Adam Chin on 1/1/17.
-//  Copyright © 2017 hushbox. All rights reserved.
+ 
 //
 
 import UIKit
